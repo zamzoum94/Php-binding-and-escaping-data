@@ -3,8 +3,8 @@
     include 'security.php';
 
     if(!empty($_POST)){
-        $full_name = $_POST['full_name'];
-        $role = $_POST['role'];
+        $full_name = trim($_POST['full_name']);
+        $role = trim($_POST['role']);
         $query = $db->prepare("INSERT INTO users (full_name, role, createdAt) VALUES (?, ?, NOW())");
         $query->bind_param("ss", $full_name, $role);
         if($query->execute()){
@@ -54,13 +54,13 @@
             <?php foreach($data as $user){ ?>
                 <div class="row">
                     <div class="col-md-2">
-                        <?=$user['full_name'] ?>
+                        <?=escape($user['full_name'])?>
                     </div>
                     <div class="col-md-2">
-                        <?=$user['role'] ?>
+                        <?=escape($user['role'])?>
                     </div>
                     <div class="col-md-2">
-                        <?=$user['createdAt'] ?>
+                        <?=escape($user['createdAt']) ?>
                     </div>
                 </div>
             <?php }?>
