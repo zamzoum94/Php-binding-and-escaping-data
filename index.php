@@ -11,6 +11,8 @@
             header("Location: http://localhost/php-binding-and-escaping-data");
         }
     }
+
+    $data = get_all();
 ?>
 
 
@@ -36,8 +38,32 @@
                     </div>
                 </div>
             </form>
-            <h3>Users</h3>
             <hr>
+            <h3>Users</h3>
+            <div class="row">
+                <div class="col-md-2">
+                    <h6 class="text-info">Full name</h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-info">Role</h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-info">Created at</h6>
+                </div>
+            </div>
+            <?php foreach($data as $user){ ?>
+                <div class="row">
+                    <div class="col-md-2">
+                        <?=$user['full_name'] ?>
+                    </div>
+                    <div class="col-md-2">
+                        <?=$user['role'] ?>
+                    </div>
+                    <div class="col-md-2">
+                        <?=$user['createdAt'] ?>
+                    </div>
+                </div>
+            <?php }?>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
